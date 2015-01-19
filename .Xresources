@@ -1,0 +1,71 @@
+! general
+URxvt*font: xft:Dejavu Sans Mono:pixelsize=14
+URxvt*loginShell: true
+URxvt*saveLines: 1024
+URxvt*internalBorder: 3
+
+! colors
+URxvt*transparent: true
+URxvt*shading: 40
+URxvt*background: #000000
+URxvt*foreground: #bfbfbf
+
+! black
+URxvt*color0: #222222
+URxvt*color8: #444444
+
+! red
+URxvt*color1: #851C1C
+URxvt*color9: #A52A2A
+
+! green
+URxvt*color2: #38761D
+URxvt*color10:#00A900
+
+! yellow
+URxvt*color3: #FF9800
+URxvt*color11:#F4D400
+
+! blue
+URxvt*color4: #2247C8
+URxvt*color12:#1E90FF
+
+! purple
+URxvt*color5: #5959AB
+URxvt*color13:#8956FB
+
+! cyan
+URxvt*color6: #45818E
+URxvt*color14:#00C8E5
+
+! white
+URxvt*color7: #999999
+URxvt*color15:#BFBFBF
+
+! scrolling
+URxvt*scrollBar: true
+URxvt*scrollBar_right: true
+URxvt*scrollBar_floating: false
+URxvt*scrollstyle: plain
+URxvt*secondaryScroll: true
+URxvt*troughColor: #000000
+URxvt*scrollColor: #333333
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: false
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+! enable clicking on links to open them
+URxvt*perl-ext-common: default,matcher,-option-popup,-selection-popup,-realine
+URxvt*matcher.button: 1
+URxvt*urlLauncher: google-chrome
+
+! disable perl extensions
+URxvt.perl-ext:
+URxvt.perl-ext-common:
+
+! disable ctrl+shift keyboard shortcuts
+URxvt*iso14755: false
