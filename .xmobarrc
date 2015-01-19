@@ -1,0 +1,27 @@
+Config { font = "xft:Dejavu Sans:pixelsize=12:bold"
+    , bgColor = "#222222"
+    , fgColor = "#666666"
+    , position = Top
+    , lowerOnStart = True
+    , commands = [ Run StdinReader
+        , Run Cpu ["-t", "CPU <total> <fc=#111111><bar></fc>"
+                  , "--suffix", "On", "--bwidth", "5"
+                  , "--Low", "40", "--High", "70"
+                  , "--low", "#2247C8", "--normal", "#1E90FF", "--high", "#00C8E5"
+                  , "-f", "█", "-b", "█"] 50 --U+2588
+        , Run Memory ["-t", "Mem <usedratio> <fc=#111111><usedbar></fc>"
+                     , "--suffix", "On", "--bwidth", "10"
+                     , "--Low", "40", "--High", "70"
+                     , "--low", "#00A900", "--normal", "#F1C232", "--high", "#A52A2A"
+                     , "-f", "█", "-b", "█"] 50 --U+2588
+        , Run Com "/bin/bash" ["-c", "~/.xmonad/volume.sh"] "vol" 10
+        , Run Com "/bin/bash" ["-c", "python ~/.xmonad/bitcoin.py"] "btc" 3000
+        , Run Date "%a %b %d" "date" 3600
+        , Run Date "<fc=#bfbfbf>%I:%M%p</fc>" "time" 10
+        ]
+    , sepChar = "%"
+    , alignSep = "}{"
+    , border = NoBorder
+    , borderColor = "#000000"
+    , template = "   %StdinReader%}{<fc=#8B6914>BTC %btc%</fc>             %cpu%   %memory%     <fc=#666666,#2E2E2E>  Vol %vol% </fc>   %date%  %time%    "
+    }
