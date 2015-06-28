@@ -2,6 +2,7 @@ import XMonad
 import XMonad.Actions.PhysicalScreens (viewScreen, sendToScreen, onNextNeighbour)
 import XMonad.Actions.SpawnOn (manageSpawn, spawnHere, spawnOn)
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks (avoidStruts)
 import XMonad.Hooks.ManageHelpers (doCenterFloat)
 import XMonad.Layout.PerWorkspace (onWorkspaces)
@@ -215,7 +216,7 @@ myLogHook h = dynamicLogWithPP xmobarPP
 ------------------
 main = do
     xmproc <- spawnPipe "xmobar"
-    xmonad $ defaultConfig
+    xmonad $ ewmh defaultConfig
         { modMask = myModMask
         , terminal = myTerminal
         , workspaces = myWorkspaces
@@ -223,6 +224,7 @@ main = do
         , layoutHook =  avoidStruts $ myLayoutHook
         , manageHook = myManageHook <+> manageHook defaultConfig
         , logHook = myLogHook xmproc
+        , handleEventHook = handleEventHook defaultConfig <+> fullscreenEventHook
 
         -- custom window colors
         , borderWidth = 1
