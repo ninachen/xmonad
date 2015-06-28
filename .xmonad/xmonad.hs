@@ -160,6 +160,7 @@ myStartupHook = do
 -- Tall [defaultNumMaster] [delta] [defaultMasterProportion]
 equalTiled = Tall 1 0.03 0.5  -- split the screen evenly
 tiled = Tall 1 0.03 0.7       -- let the master take up most of the screen
+wideTiled = Tall 1 0.03 0.8
 
 -- custom tab layout theme
 myTabConfig = defaultTheme {
@@ -174,7 +175,7 @@ myTabConfig = defaultTheme {
 
 myLayoutHook = onWorkspaces [wsWeb, ws2] (rightMasterLayout tiled) $
                onWorkspaces [wsDev] tabbedLayout $
-               onWorkspaces [wsMail] (leftMasterLayout tiled) $
+               onWorkspaces [wsMail] (leftMasterLayout wideTiled) $
                onWorkspaces [ws1] (rightMasterLayout equalTiled) $
                leftMasterLayout equalTiled -- layout for other workspaces
     where
@@ -192,8 +193,8 @@ myManageHook = composeAll
     , className =? "eclipse" --> doCenterFloat
     , className =? "Eclipse" --> doShift wsDev
     , className =? "Gimp" --> doFloat
-    , className =? "jetbrains-idea" --> doShift wsDev
     , className =? "Java" --> doCenterFloat
+    , className =? "jetbrains-idea" --> doShift wsDev
     , className =? "Keepass" --> doCenterFloat
     , className =? "Kolourpaint" --> doShift ws3
     , className =? "Meld" --> doCenterFloat
