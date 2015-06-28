@@ -5,6 +5,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks (avoidStruts)
 import XMonad.Hooks.ManageHelpers (doCenterFloat)
+import XMonad.Hooks.SetWMName
 import XMonad.Layout.PerWorkspace (onWorkspaces)
 import XMonad.Layout.Reflect (reflectHoriz)
 import XMonad.Layout.Tabbed
@@ -117,6 +118,7 @@ myKeysP =
     , ("M-x d 2", spawnOn wsDev (dartEditor ++ " -data ~/dart/workspaces/dart2"))
     , ("M-x d 3", spawnOn wsDev (dartEditor ++ " -data ~/dart/workspaces/dart3"))
     , ("M-x e", spawnOn wsDev "eclipse44")
+    , ("M-x i", spawnOn wsDev "~/intellij/bin/idea.sh")
     , ("M-x f", spawnHere "firefox")
     , ("M-x k", spawnHere "kolourpaint")
 
@@ -190,6 +192,7 @@ myManageHook = composeAll
     , className =? "eclipse" --> doCenterFloat
     , className =? "Eclipse" --> doShift wsDev
     , className =? "Gimp" --> doFloat
+    , className =? "jetbrains-idea" --> doShift wsDev
     , className =? "Java" --> doCenterFloat
     , className =? "Keepass" --> doCenterFloat
     , className =? "Kolourpaint" --> doShift ws3
@@ -210,6 +213,7 @@ myLogHook h = dynamicLogWithPP xmobarPP
     , ppTitle = xmobarColor colorLightBlue "" . shorten 100 -- active window title
     , ppLayout = const "" -- disable the layout info on xmobar
     }
+    >> setWMName "LG3D" -- for IntelliJ to work
 
 ------------------
 --     Main     --
