@@ -28,6 +28,7 @@ myScreenLock = "gnome-screensaver-command -l"
 myPrintScreen = "scrot -e 'mv $f ~/screenshots/ && kolourpaint ~/screenshots/$f'"
 dartEditor = "env UBUNTU_MENUPROXY= ~/dart/DartEditor"
 dartium = "~/dart/chromium/chrome"
+intellij = "~/bin/intellij-stable/bin/idea.sh"
 
 webMail = "google-chrome --new-window https://mail.google.com/mail/ca/u/0/ https://www.google.com/calendar/"
 webMusic = "google-chrome --new-window https://play.google.com/music/listen/"
@@ -118,7 +119,7 @@ myKeysP =
     , ("M-x d 2", spawnOn wsDev (dartEditor ++ " -data ~/dart/workspaces/dart2"))
     , ("M-x d 3", spawnOn wsDev (dartEditor ++ " -data ~/dart/workspaces/dart3"))
     , ("M-x e", spawnOn wsDev "eclipse44")
-    , ("M-x i", spawnOn wsDev "~/intellij/bin/idea.sh")
+    , ("M-x i", spawnOn wsDev intellij)
     , ("M-x f", spawnHere "firefox")
     , ("M-x k", spawnHere "kolourpaint")
 
@@ -127,9 +128,6 @@ myKeysP =
     , ("M-x g", spawnHere "google-chrome")
     , ("M-x m", spawnOn wsMail webMail)
     , ("M-x u", spawnOn wsMusic webMusic)
-
-    -- shutdown
-    , ("M-x p", spawnHere "/usr/lib/indicator-session/gtk-logout-helper --shutdown")
     ]
 
 myRemoveKeysP =
